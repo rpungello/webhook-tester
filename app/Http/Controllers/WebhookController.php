@@ -21,7 +21,7 @@ class WebhookController extends Controller
             'user_agent' => $request->userAgent(),
         ]);
 
-        foreach($request->headers as $name => $value) {
+        foreach ($request->headers as $name => $value) {
             $model->headers()->create([
                 'name' => $name,
                 'value' => implode(',', $value),
