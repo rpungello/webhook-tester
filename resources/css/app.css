@@ -17,3 +17,10 @@
     @apply bg-base-100
 }
 
+h1 {
+    @apply text-2xl font-bold;
+}
+
+h2 {
+    @apply text-lg opacity-50;
+}

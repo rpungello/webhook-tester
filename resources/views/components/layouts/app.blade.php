@@ -6,6 +6,11 @@
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
+                <li>
+                    <a href="{{ route('projects.index') }}">
+                        {{ __('Projects') }}
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="navbar-end">
@@ -30,5 +35,7 @@
             </div>
         </div>
     </div>
-    {{ $slot }}
+    <main class="max-w-7xl mx-auto">
+        {{ $slot }}
+    </main>
 </x-layouts.base>
