@@ -50,4 +50,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Project::class);
     }
+
+    public function requests(): HasMany
+    {
+        return $this->hasMany(Request::class);
+    }
 }

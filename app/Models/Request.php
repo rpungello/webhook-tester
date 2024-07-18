@@ -2,28 +2,26 @@
 
 namespace App\Models;
 
-use Dyrynda\Database\Support\NullableFields;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Project extends Model
+class Request extends Model
 {
-    use HasFactory, NullableFields, SoftDeletes;
+    use SoftDeletes, HasFactory;
 
     protected $fillable = [
         'user_id',
-        'name',
-        'response_code',
-        'response_content_type',
-        'response_body',
-    ];
-
-    protected $nullable = [
-        'response_content_type',
-        'response_body',
+        'project_id',
+        'ip_address',
+        'path',
+        'method',
+        'content_type',
+        'query_string',
+        'body',
+        'user_agent',
     ];
 
     public function user(): BelongsTo
@@ -31,8 +29,13 @@ class Project extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function requests(): HasMany
+    public function project(): BelongsTo
     {
-        return $this->hasMany(Request::class);
+        return $this->belongsTo(Project::class);
+    }
+
+    public function headers(): HasMany
+    {
+        return $this->hasMany(RequestHeader::class);
     }
 }

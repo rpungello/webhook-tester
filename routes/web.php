@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\WebhookController;
 use App\Livewire\Home;
 use App\Livewire\Projects\EditProject;
 use App\Livewire\Projects\ListProjects;
@@ -22,6 +23,8 @@ Route::get('/status', StatusController::class);
 Route::get('/', function () {
     return redirect()->route('home');
 });
+
+Route::any('/projects/{project}/api/{any?}', WebhookController::class)->where('any', '.*');
 
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/home', Home::class)->name('home');
