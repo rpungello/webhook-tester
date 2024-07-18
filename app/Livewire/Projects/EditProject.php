@@ -14,6 +14,7 @@ class EditProject extends Component
     use LivewireAlert;
 
     public Project $project;
+
     #[Validate(['required', 'max:255'])]
     public string $name = '';
 
