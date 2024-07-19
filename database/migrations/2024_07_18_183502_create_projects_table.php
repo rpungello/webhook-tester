@@ -14,7 +14,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->unsignedSmallInteger('response_code')->default(\Symfony\Component\HttpFoundation\Response::HTTP_OK);
-            $table->string('response_content_type')->nullable();
+            $table->string('response_content_type')->default('text/plain');
             $table->string('response_body')->nullable();
             $table->softDeletes();
             $table->timestamps();

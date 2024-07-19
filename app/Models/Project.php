@@ -22,7 +22,6 @@ class Project extends Model
     ];
 
     protected $nullable = [
-        'response_content_type',
         'response_body',
     ];
 

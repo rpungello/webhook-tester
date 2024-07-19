@@ -21,8 +21,8 @@ class EditProject extends Component
     #[Validate(['required', 'numeric', 'between:200,599'])]
     public int $response_code = Response::HTTP_OK;
 
-    #[Validate(['string', 'nullable', 'max:255'])]
-    public ?string $response_content_type = null;
+    #[Validate(['required', 'string', 'max:255'])]
+    public string $response_content_type = '';
 
     #[Validate(['string', 'nullable'])]
     public ?string $response_body = null;
