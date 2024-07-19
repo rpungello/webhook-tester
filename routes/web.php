@@ -5,6 +5,7 @@ use App\Http\Controllers\WebhookController;
 use App\Livewire\Home;
 use App\Livewire\Projects\EditProject;
 use App\Livewire\Projects\ListProjects;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,7 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
-Route::any('/projects/{project}/api/{any?}', WebhookController::class)->where('any', '.*');
+Route::any('/projects/{project}/api/{any?}', WebhookController::class)->where('any', '.*')->withoutMiddleware(VerifyCsrfToken::class);
 
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/home', Home::class)->name('home');
