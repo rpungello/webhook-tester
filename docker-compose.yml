@@ -102,6 +102,7 @@ services:
         depends_on:
             - app
         profiles:
+            - app
             - prod
     app:
         image: rpungello/laravel-app:8.3
@@ -109,14 +110,31 @@ services:
             - ".:/var/www/html"
         restart: unless-stopped
         profiles:
+            - app
+            - prod
+    worker:
+        image: rpungello/laravel-worker:8.3
+        volumes:
+            - ".:/var/www/html"
+        restart: unless-stopped
+        profiles:
+            - work
+            - prod
+    scheduler:
+        image: rpungello/laravel-scheduler:8.3
+        volumes:
+            - ".:/var/www/html"
+        restart: unless-stopped
+        profiles:
+            - work
             - prod
     reverb:
         image: rpungello/laravel-reverb:8.3
         ports:
             - '${FORWARD_REVERB_PORT:-8080}:8080'
         profiles:
-            - prod
             - dev
+            - prod
         volumes:
             - '.:/var/www/html'
         restart: unless-stopped
