@@ -11,7 +11,7 @@ class WebhookController extends Controller
     public function __invoke(Project $project, Request $request): Response
     {
         $model = $project->requests()->create([
-            'user_id' => $request->user()->getKey(),
+            'user_id' => $project->user_id,
             'ip_address' => $request->ip(),
             'path' => $this->getRelativePath($request->path()),
             'method' => $request->method(),
