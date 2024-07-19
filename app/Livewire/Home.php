@@ -5,13 +5,13 @@ namespace App\Livewire;
 use App\Models\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Log;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Home extends Component
 {
     public ?Request $selectedRequest = null;
+
     public ?Collection $requests = null;
 
     public function mount(): void
