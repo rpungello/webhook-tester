@@ -87,10 +87,19 @@ services:
     mailpit:
         image: 'axllent/mailpit:latest'
         ports:
-            - '${FORWARD_MAILPIT_PORT:-1025}:1025'
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
         profiles:
             - dev
+    reverb:
+        image: rpungello/laravel-reverb:8.3
+        ports:
+            - '${FORWARD_REVERB_PORT:-8080}:8080'
+        profiles:
+            - prod
+            - dev
+        volumes:
+            - '.:/var/www/html'
+        restart: unless-stopped
 volumes:
     mysql:
         driver: local

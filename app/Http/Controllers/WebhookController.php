@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\WebhookReceivedEvent;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,6 +28,8 @@ class WebhookController extends Controller
                 'value' => implode(',', $value),
             ]);
         }
+
+        WebhookReceivedEvent::dispatch($model);
 
         return response($project->response_body, $project->response_code, [
             'Content-Type' => $project->response_content_type,
