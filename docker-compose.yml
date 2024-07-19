@@ -124,10 +124,12 @@ services:
             - work
             - prod
     scheduler:
-        image: rpungello/laravel-scheduler:8.3
-        volumes:
-            - ".:/var/www/html"
+        image: rpungello/webhook-tester:stable
+        env_file: .env
         restart: unless-stopped
+        entrypoint:
+            - 'cron'
+            - '-f'
         profiles:
             - work
             - prod
