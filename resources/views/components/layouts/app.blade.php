@@ -35,7 +35,7 @@
             </div>
         </div>
     </div>
-    <main class="max-w-7xl mx-auto">
+    <main>
         {{ $slot }}
     </main>
 </x-layouts.base>
