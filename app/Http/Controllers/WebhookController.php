@@ -15,7 +15,7 @@ class WebhookController extends Controller
             'ip_address' => $request->ip(),
             'path' => $this->getRelativePath($request->path()),
             'method' => $request->method(),
-            'content_type' => $request->getContentTypeFormat(),
+            'content_type' => $request->header('content-type'),
             'query_string' => $request->getQueryString(),
             'body' => $request->getContent(),
             'user_agent' => $request->userAgent(),
