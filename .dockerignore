@@ -1,5 +1,7 @@
 bootstrap/cache/services.php
 
+docker/*
+
 public/build/*
 
 storage/app/*
