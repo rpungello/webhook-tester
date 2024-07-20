@@ -128,8 +128,9 @@ services:
         env_file: .env
         restart: unless-stopped
         entrypoint:
-            - 'cron'
-            - '-f'
+            - 'php'
+            - 'artisan'
+            - 'schedule:work'
         profiles:
             - work
             - prod
