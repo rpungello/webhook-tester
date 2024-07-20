@@ -1,8 +1,6 @@
 bootstrap/cache/services.php
 
-docker/*
-
-public/build/*
+public/build
 
 storage/app/*
 storage/framework/cache/*
