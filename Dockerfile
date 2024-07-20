@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y npm 7zip \
 	pcntl \
     redis \
 	opcache \
- && composer install && npm install \
+ && composer install && npm install && npm run build \
  && chown -R www-data:www-data /app \
  && apt-get -y remove npm 7zip && apt-get -y autoremove && apt-get clean
 
