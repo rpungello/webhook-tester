@@ -38,7 +38,7 @@
             </div>
 
             <!-- Headers -->
-            <div class="w-1/2">
+            <div class="w-1/2 main-height">
                 <h1>{{ __('Headers') }}</h1>
                 @foreach($selectedRequest->headers as $header)
                     <x-list-item :item="$header" value="name" sub-value="value" />
