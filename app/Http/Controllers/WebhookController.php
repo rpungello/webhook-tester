@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\WebhookReceivedEvent;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 
 class WebhookController extends Controller
@@ -29,7 +30,9 @@ class WebhookController extends Controller
             ]);
         }
 
-        WebhookReceivedEvent::dispatch($model);
+        if (config('app.websocket')) {
+            WebhookReceivedEvent::dispatch($model);
+        }
 
         return response($project->response_body, $project->response_code, [
             'Content-Type' => $project->response_content_type,
