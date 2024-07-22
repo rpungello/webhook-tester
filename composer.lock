@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87ab71e88f0f0ab168f868114b7c96fb",
+    "content-hash": "4f04806203fbe0a80fe6e33d8be67bbc",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -7517,6 +7517,63 @@
             "time": "2023-12-08T13:03:43+00:00"
         },
         {
+            "name": "vectorface/whip",
+            "version": "v0.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Vectorface/whip.git",
+                "reference": "0d0f4648cfb29777f0ae9f2dc6a3853e16674f78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Vectorface/whip/zipball/0d0f4648cfb29777f0ae9f2dc6a3853e16674f78",
+                "reference": "0d0f4648cfb29777f0ae9f2dc6a3853e16674f78",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.0",
+                "psr/http-message": "^1.0 || ^2.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.0",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Vectorface\\Whip\\": "./src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Bruce",
+                    "email": "dbruce@vectorface.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Cory Darby",
+                    "email": "ckdarby@vectorface.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP class for retrieving accurate IP address information for the client.",
+            "homepage": "https://github.com/Vectorface/whip",
+            "keywords": [
+                "IP",
+                "cdn",
+                "cloudflare"
+            ],
+            "support": {
+                "issues": "https://github.com/Vectorface/whip/issues",
+                "source": "https://github.com/Vectorface/whip"
+            },
+            "time": "2024-01-22T01:03:59+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v5.6.0",
             "source": {
@@ -9880,7 +9937,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.2"
+        "php": "^8.2",
+        "ext-pdo": "*"
     },
     "platform-dev": [],
     "plugin-api-version": "2.6.0"

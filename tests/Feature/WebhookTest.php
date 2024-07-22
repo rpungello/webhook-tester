@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Vectorface\Whip\Whip;
 
 class WebhookTest extends TestCase
 {
@@ -19,6 +20,16 @@ class WebhookTest extends TestCase
 
         $response->assertStatus($project->response_code);
         $response->assertContent($project->response_body);
+    }
+
+    public function test_reads_ip_address()
+    {
+        $user = User::factory()->create();
+        $project = Project::factory()->forUser($user)->create();
+        $this->withHeader('cf-connecting-ip', '187.2.4.1')->get($project->getApiUri()->getPath());
+
+        $request = $project->requests()->first();
+        $this->assertEquals('187.2.4.1', $request->ip_address);
     }
 
     public function test_creates_get_request()
