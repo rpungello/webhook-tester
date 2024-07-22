@@ -12,6 +12,6 @@ class ProjectTest extends TestCase
         $project = new Project();
         $project->id = 1;
 
-        $this->assertEquals("projects/1/api", $project->getApiPath());
+        $this->assertEquals('projects/1/api', $project->getApiPath());
     }
 }

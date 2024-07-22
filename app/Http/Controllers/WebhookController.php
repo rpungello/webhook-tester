@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Events\WebhookReceivedEvent;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 
 class WebhookController extends Controller

@@ -44,6 +44,7 @@ class Project extends Model
     public function getApiUri(): Uri
     {
         $uri = new Uri(config('app.url'));
+
         return $uri->withPath($this->getApiPath());
     }
 
