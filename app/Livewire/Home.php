@@ -40,5 +40,6 @@ class Home extends Component
     #[On('echo:webhooks,WebhookReceivedEvent')]
     public function updateRequests(): void
     {
+        // This doesn't actually need to do anything, we just need to trigger a Livewire update
     }
 }
