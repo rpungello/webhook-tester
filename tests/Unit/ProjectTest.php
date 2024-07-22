@@ -7,7 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class ProjectTest extends TestCase
 {
-    public function test_generate_project_url()
+    public function test_generate_project_path()
     {
         $project = new Project();
         $project->id = 1;
