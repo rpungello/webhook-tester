@@ -22,7 +22,7 @@ class Project extends Model
         'response_body',
     ];
 
-    protected $nullable = [
+    protected array $nullable = [
         'response_body',
     ];
 
