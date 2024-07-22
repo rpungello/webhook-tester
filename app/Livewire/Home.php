@@ -4,7 +4,6 @@ namespace App\Livewire;
 
 use App\Models\Request;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -23,7 +22,7 @@ class Home extends Component
     public function render(): View
     {
         return view('livewire.home', [
-            'requests' => auth()->user()->requests()->latest()->simplePaginate(15)
+            'requests' => auth()->user()->requests()->latest()->simplePaginate(15),
         ]);
     }
 
