@@ -20,8 +20,13 @@ class ProjectFactory extends Factory
             'response_code' => $this->faker->numberBetween(200, 599),
             'response_content_type' => $this->faker->word(),
             'response_body' => $this->faker->paragraph(),
-
-            'user_id' => User::factory(),
         ];
+    }
+
+    public function forUser(User $user): ProjectFactory
+    {
+        return $this->state(fn (array $attributes) => [
+            'user_id' => $user->id,
+        ]);
     }
 }

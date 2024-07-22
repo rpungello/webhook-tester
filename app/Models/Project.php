@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Dyrynda\Database\Support\NullableFields;
+use GuzzleHttp\Psr7\Uri;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -33,5 +34,21 @@ class Project extends Model
     public function requests(): HasMany
     {
         return $this->hasMany(Request::class);
+    }
+
+    public function getApiUrl(): string
+    {
+        return $this->getApiUri();
+    }
+
+    public function getApiUri(): Uri
+    {
+        $uri = new Uri(config('app.url'));
+        return $uri->withPath($this->getApiPath());
+    }
+
+    public function getApiPath(): string
+    {
+        return "projects/{$this->getKey()}/api";
     }
 }
