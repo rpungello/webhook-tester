@@ -7,9 +7,12 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Home extends Component
 {
+    use WithPagination;
+
     public ?Request $selectedRequest = null;
 
     public function mount(): void
