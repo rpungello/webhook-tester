@@ -12,8 +12,6 @@ class Home extends Component
 {
     public ?Request $selectedRequest = null;
 
-    public ?Collection $requests = null;
-
     public function mount(): void
     {
         $this->updateRequests();
@@ -21,7 +19,9 @@ class Home extends Component
 
     public function render(): View
     {
-        return view('livewire.home');
+        return view('livewire.home', [
+            'requests' => auth()->user()->requests()->latest()->simplePaginate(15)
+        ]);
     }
 
     public function selectRequest(Request $request): void
@@ -37,6 +37,5 @@ class Home extends Component
     #[On('echo:webhooks,WebhookReceivedEvent')]
     public function updateRequests(): void
     {
-        $this->requests = auth()->user()->requests()->latest()->get();
     }
 }
