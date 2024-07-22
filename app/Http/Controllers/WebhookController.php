@@ -40,6 +40,6 @@ class WebhookController extends Controller
 
     private function getRelativePath(string $path): string
     {
-        return preg_replace('/^projects\/\d+\/api\//', '', $path);
+        return preg_replace('/^projects\/\d+\/api\/?/', '', $path);
     }
 }
