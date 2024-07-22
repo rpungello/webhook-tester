@@ -25,7 +25,7 @@ Route::get('/', function () {
     return redirect()->route('home');
 });
 
-Route::any('/projects/{project}/api/{any?}', WebhookController::class)->where('any', '.*')->withoutMiddleware(VerifyCsrfToken::class);
+Route::any('/projects/{project}/api/{any?}', WebhookController::class)->withoutMiddleware(VerifyCsrfToken::class);
 
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/home', Home::class)->name('home');
