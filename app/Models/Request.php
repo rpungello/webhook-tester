@@ -41,7 +41,12 @@ class Request extends Model
 
     public function toList(): array
     {
-        $list = [];
+        $list = [
+            [
+                'name' => __('Project'),
+                'value' => $this->project->name,
+            ],
+        ];
         foreach ($this->only($this->getListProperties()) as $key => $value) {
             if (! empty($value)) {
                 $list[] = [
