@@ -12,7 +12,7 @@ class SymfonyRequestAdapter implements RequestAdapter
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getRemoteAddr(): ?string
     {
@@ -20,7 +20,7 @@ class SymfonyRequestAdapter implements RequestAdapter
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function getHeaders(): array
     {
@@ -28,6 +28,7 @@ class SymfonyRequestAdapter implements RequestAdapter
         foreach ($this->request->headers->all() as $name => $value) {
             $headers[$name] = implode(',', $value);
         }
+
         return $headers;
     }
 }
