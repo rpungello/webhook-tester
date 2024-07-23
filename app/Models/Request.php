@@ -11,7 +11,7 @@ use Laravel\Scout\Searchable;
 
 class Request extends Model
 {
-    use HasFactory, SoftDeletes, Searchable;
+    use HasFactory, Searchable, SoftDeletes;
 
     protected $fillable = [
         'user_id',
