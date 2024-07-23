@@ -9,6 +9,7 @@
         </div>
         <div class="request-list-height" wire:loading.class="animate-pulse">
             @foreach($requests as $request)
+                {{-- Hide trashed items as it takes time for Scout to pick up on the fact that an item has been deleted --}}
                 @if(!$request->trashed())
                     <x-list-item class="{{ $this->isActive($request) ? 'bg-base-200' : '' }}" :item="$request">
                         <!-- Request method -->
