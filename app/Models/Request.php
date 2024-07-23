@@ -37,7 +37,7 @@ class Request extends Model
 
     public function headers(): HasMany
     {
-        return $this->hasMany(RequestHeader::class);
+        return $this->hasMany(RequestHeader::class)->orderBy('name');
     }
 
     public function toList(): array
