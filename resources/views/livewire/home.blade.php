@@ -1,4 +1,23 @@
 <div class="flex flex-row">
+    <script>
+        function copyText(field, value, isBase64 = false) {
+            if (isBase64) {
+                value = atob(value);
+            }
+            navigator.clipboard.writeText(value);
+
+            Swal.fire({
+                icon: 'info',
+                title: field + ' copied to clipboard',
+                timer: 3000,
+                showCloseButton: false,
+                position: 'top-end',
+                showConfirmButton: false,
+                toast: true,
+            });
+        }
+    </script>
+
     <!-- Sidebar list of requests -->
     <aside class="w-96">
         <div class="px-4 flex flex-row items-center space-x-4">
@@ -50,11 +69,18 @@
             <div class="w-1/2 main-height">
                 <h1>{{ __('Request Data') }}</h1>
                 @foreach($selectedRequest->toList() as $field)
-                    <x-list-item :item="$field" value="name" sub-value="value"/>
+                    <x-list-item :item="$field" value="name" sub-value="value">
+                        <x-slot:actions>
+                            <x-button onclick="copyText('{{ $field['name'] }}', '{{ $field['value'] }}')" icon="o-clipboard" class="" />
+                        </x-slot:actions>
+                    </x-list-item>
                 @endforeach
 
                 @isset($selectedRequest->body)
-                    <h1 class="mt-8">{{ __('Body') }}</h1>
+                    <div class="mt-8 flex flex-row items-center space-x-4">
+                        <h1>{{ __('Body') }}</h1>
+                        <x-button onclick="copyText('Body', '{{ base64_encode($selectedRequest->body) }}', true)" icon="o-clipboard" class="" />
+                    </div>
                     <p class="whitespace-pre-wrap">{!! $selectedRequest->getFormattedBody() !!}</p>
                 @endisset
             </div>
@@ -63,7 +89,11 @@
             <div class="w-1/2 main-height">
                 <h1>{{ __('Headers') }}</h1>
                 @foreach($selectedRequest->headers as $header)
-                    <x-list-item :item="$header" value="name" sub-value="value"/>
+                    <x-list-item :item="$header" value="name" sub-value="value">
+                        <x-slot:actions>
+                            <x-button onclick="copyText('{{ $header->name }}', '{{ $header->value }}')" icon="o-clipboard" class="" />
+                        </x-slot:actions>
+                    </x-list-item>
                 @endforeach
             </div>
         </div>
