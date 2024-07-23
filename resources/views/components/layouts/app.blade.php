@@ -25,6 +25,11 @@
                     <ul tabindex="0"
                         class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                         <li>
+                            <a href="{{ route('profile') }}">
+                                {{ __('Profile') }}
+                            </a>
+                        </li>
+                        <li>
                             <form method="post" action="{{ route('logout') }}">
                                 @csrf
                                 <button>{{ __('Logout') }}</button>

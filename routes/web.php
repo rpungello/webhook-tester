@@ -3,6 +3,7 @@
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\WebhookController;
 use App\Livewire\Home;
+use App\Livewire\Profile;
 use App\Livewire\Projects\EditProject;
 use App\Livewire\Projects\ListProjects;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -29,6 +30,7 @@ Route::any('/projects/{project}/api/{any?}', WebhookController::class)->withoutM
 
 Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/home', Home::class)->name('home');
+    Route::get('/profile', Profile::class)->name('profile');
     Route::get('/projects', ListProjects::class)->name('projects.index');
     Route::get('/projects/{project}', EditProject::class)->name('projects.edit');
 });
