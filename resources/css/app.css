@@ -31,6 +31,6 @@ h2 {
 }
 
 .request-list-height {
-    height: calc(100vh - 9rem) !important;
+    height: calc(100vh - 12rem) !important;
     @apply overflow-y-auto;
 }

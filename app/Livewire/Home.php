@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Request;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\On;
 use Livewire\Component;
@@ -14,6 +15,8 @@ class Home extends Component
 
     public ?Request $selectedRequest = null;
 
+    public string $search = '';
+
     public function mount(): void
     {
         $this->updateRequests();
@@ -22,7 +25,7 @@ class Home extends Component
     public function render(): View
     {
         return view('livewire.home', [
-            'requests' => auth()->user()->requests()->latest()->simplePaginate(15),
+            'requests' => $this->paginateRequests(),
         ]);
     }
 
@@ -40,5 +43,13 @@ class Home extends Component
     public function updateRequests(): void
     {
         // This doesn't actually need to do anything, we just need to trigger a Livewire update
+    }
+
+    private function paginateRequests(): Paginator
+    {
+        return Request::search($this->search)
+            ->where('user_id', auth()->id())
+            ->orderBy('created_at', 'desc')
+            ->simplePaginate(15);
     }
 }

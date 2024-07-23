@@ -1,7 +1,10 @@
 <div class="flex flex-row">
     <!-- Sidebar list of requests -->
     <aside class="w-96">
-        <div class="request-list-height">
+        <div class="px-4">
+            <x-input wire:model.live="search" icon="o-magnifying-glass" class="w-full"/>
+        </div>
+        <div class="request-list-height" wire:loading.class="animate-pulse">
             @foreach($requests as $request)
                 <x-list-item class="cursor-pointer {{ $this->isActive($request) ? 'bg-base-200' : '' }}"
                              :item="$request" wire:click="selectRequest({{ $request }})">
