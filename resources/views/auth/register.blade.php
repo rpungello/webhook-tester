@@ -7,8 +7,8 @@
 
             <h1 class="font-bold text-xl text-center">{{ config('app.name') }}</h1>
 
-            <!-- Email address -->
-            <x-input name="name" type="text" label="{{ __('Name') }}" icon="o-user" error-field="email" class="min-w-96" value="{{ old('name') }}" />
+            <!-- Name -->
+            <x-input name="name" type="text" label="{{ __('Name') }}" icon="o-user" error-field="name" class="min-w-96" value="{{ old('name') }}" />
 
             <!-- Email address -->
             <x-input name="email" type="email" label="{{ __('Email') }}" icon="o-at-symbol" error-field="email" class="min-w-96" value="{{ old('email') }}" />
