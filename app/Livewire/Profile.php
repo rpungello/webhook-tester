@@ -19,6 +19,7 @@ class Profile extends Component
 
     #[Validate(['confirmed', 'string', 'max:255'])]
     public string $password = '';
+
     public string $password_confirmation = '';
 
     public function mount(): void
