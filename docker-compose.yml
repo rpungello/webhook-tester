@@ -87,6 +87,7 @@ services:
             timeout: 5s
         profiles:
             - dev
+            - search
     mailpit:
         image: 'axllent/mailpit:latest'
         ports:
