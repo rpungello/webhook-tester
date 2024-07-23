@@ -39,6 +39,17 @@ class Home extends Component
         return $this->selectedRequest?->id === $request->id;
     }
 
+    public function delete(Request $request): void
+    {
+        $request->delete();
+    }
+
+    public function deleteAll(): void
+    {
+        // Requests are removed individually so the Scout update takes place
+        auth()->user()->requests->each(fn (Request $request) => $this->delete($request));
+    }
+
     #[On('echo:webhooks,WebhookReceivedEvent')]
     public function updateRequests(): void
     {

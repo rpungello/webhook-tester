@@ -13,19 +13,39 @@ class ScoutPrepareCommand extends Command
 
     public function handle(): int
     {
+        $this->flushModels();
         $this->importModels();
         $this->syncIndexes();
 
         return static::SUCCESS;
     }
 
+    private function flushModels(): void
+    {
+        foreach ($this->getModels() as $model) {
+            $this->call('scout:flush', compact('model'));
+        }
+    }
+
     private function importModels(): void
     {
-        $this->call('scout:import', ['model' => Request::class]);
+        foreach ($this->getModels() as $model) {
+            $this->call('scout:import', compact('model'));
+        }
     }
 
     private function syncIndexes(): void
     {
         $this->call('scout:sync-index-settings');
+    }
+
+    /**
+     * @return class-string[]
+     */
+    private function getModels(): array
+    {
+        return [
+            Request::class,
+        ];
     }
 }
