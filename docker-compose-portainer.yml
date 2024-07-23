@@ -1,6 +1,7 @@
 services:
     mysql:
         image: 'mysql/mysql-server:8.0'
+        restart: unless-stopped
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
@@ -25,6 +26,7 @@ services:
             - db
     redis:
         image: 'redis:alpine'
+        restart: unless-stopped
         expose:
             - '6379'
         ports:
@@ -43,6 +45,7 @@ services:
             - cache
     meilisearch:
         image: 'getmeili/meilisearch:latest'
+        restart: unless-stopped
         ports:
             - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
         environment:
@@ -63,6 +66,7 @@ services:
             - search
     mailpit:
         image: 'axllent/mailpit:latest'
+        restart: unless-stopped
         ports:
             - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
         profiles:
