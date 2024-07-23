@@ -23,7 +23,7 @@
                 {{ __('Forgot your password?') }}
             </a>
 
-            <div class="flex flex-col sm:flex-row w-full space-x-4">
+            <div class="flex flex-col sm:flex-row w-full sm:space-x-4 space-y-4 sm:space-y-0">
                 <a href="{{ route('register') }}" class="btn btn-default flex-grow">{{ __('Register') }}</a>
                 <x-button type="submit" class="btn btn-primary flex-grow" label="{{ __('Sign In') }}" tabindex="4"/>
             </div>
