@@ -19,11 +19,6 @@
             <!-- Password confirmation -->
             <x-input name="password_confirmation" type="password" label="{{ __('Confirm Password') }}" icon="o-key" error-field="password_confirmation" class="min-w-96" />
 
-            <!-- Forgot password -->
-            <a href="{{ route('password.request') }}" class="text-sm text-primary text-right hover:underline">
-                {{ __('Forgot your password?') }}
-            </a>
-
             <x-button type="submit" class="btn btn-primary" label="{{ __('Register') }}" />
         </form>
     </div>
