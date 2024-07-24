@@ -28,6 +28,7 @@ readme.md
 phpspec.yml
 
 Dockerfile
+docker-compose.yml
 docker-compose-portainer.yml
 run
 run.ps1
