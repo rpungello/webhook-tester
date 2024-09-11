@@ -7,9 +7,7 @@ use Vectorface\Whip\Request\RequestAdapter;
 
 class SymfonyRequestAdapter implements RequestAdapter
 {
-    public function __construct(protected Request $request)
-    {
-    }
+    public function __construct(protected Request $request) {}
 
     /**
      * {@inheritDoc}

@@ -13,9 +13,7 @@ class WebhookReceivedEvent implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public function __construct(public Request $request)
-    {
-    }
+    public function __construct(public Request $request) {}
 
     public function broadcastOn(): array
     {

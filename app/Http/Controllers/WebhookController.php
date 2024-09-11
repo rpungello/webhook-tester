@@ -47,6 +47,6 @@ class WebhookController extends Controller
 
     private function getClientIpAddress(Request $request): string
     {
-        return with(new Whip())->getValidIpAddress(new SymfonyRequestAdapter($request)) ?: $request->ip();
+        return with(new Whip)->getValidIpAddress(new SymfonyRequestAdapter($request)) ?: $request->ip();
     }
 }
