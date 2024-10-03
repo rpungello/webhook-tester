@@ -18,6 +18,11 @@ updates:
     labels:
       - "php"
       - "dependencies"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
 
   - package-ecosystem: "npm"
     directory: "/"
@@ -26,3 +31,8 @@ updates:
     labels:
       - "npm"
       - "dependencies"
+    groups:
+      production-dependencies:
+        dependency-type: "production"
+      development-dependencies:
+        dependency-type: "development"
