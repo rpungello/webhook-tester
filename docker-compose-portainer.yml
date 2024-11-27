@@ -44,7 +44,7 @@ services:
             - dev
             - cache
     meilisearch:
-        image: 'getmeili/meilisearch:latest'
+        image: 'getmeili/meilisearch:v1.9'
         restart: unless-stopped
         ports:
             - '${FORWARD_MEILISEARCH_PORT:-7700}:7700'
