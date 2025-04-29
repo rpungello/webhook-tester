@@ -1,3 +1,15 @@
 #!/usr/bin/env bash
 
-docker buildx build --pull --no-cache --platform=linux/amd64,linux/arm64/v8 --tag rpungello/webhook-tester:stable --push .
+set -e
+
+# Read the current version from composer.json
+CURRENT_VERSION=$(git describe --tags --abbrev=0)
+
+# Build the Docker image
+echo "Building Webhook Tester v$CURRENT_VERSION"
+docker buildx build \
+       --pull \
+       --no-cache \
+       --build-arg VERSION="$CURRENT_VERSION" \
+       --tag "rpungello/webhook-tester:latest" \
+       --load .
