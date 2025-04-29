@@ -6,7 +6,7 @@ Simple, Laravel-based webhook tester for inspecting webhook calls from third-par
 Download the latest docker-compose.yml file
 
 ```bash 
-wget https://raw.githubusercontent.com/rpungello/webhook-tester/main/docker-compose.yml
+wget -O docker-compose.yml https://raw.githubusercontent.com/rpungello/webhook-tester/main/docker-compose-prod.yml
 ```
 
 Download sample .env file.
@@ -22,14 +22,13 @@ In particular, for WebSockets to work properly, the following needs to be set pr
 - `VITE_REVERB_SCHEME`: http or https
 This will enable the use of WebSockets to facilitate realtime display of new webhook requests.
 
-Start Docker stack in production mode.
+Remove any unnecessary services from the downloaded docker-compose file (e.g. mysql, redis, etc.) if you don't need them.
+
+Start Docker stack.
 
 ```bash
-docker compose --profile prod up -d
+docker compose up -d
 ```
-
-If you want to host the database or redis instance internally,
-append `--profile db` and/or `--profile cache` to the above command.
 
 Generate an app key.
 Note that if your Docker container name is anything other than `webhook-tester-app-1`,
@@ -42,8 +41,8 @@ curl https://raw.githubusercontent.com/rpungello/webhook-tester/main/docker/key.
 Restart the Docker stack to apply the updated `.env` file
 
 ```bash
-docker compose --profile prod down
-docker compose --profile prod up -d
+docker compose down
+docker compose up -d
 ```
 
 Run migrations (replace `webhook-tester-app-1` with the name of the app container)
