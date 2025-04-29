@@ -87,12 +87,6 @@ services:
         - 'http://127.0.0.1:7700/health'
       retries: 3
       timeout: 5s
-  mailpit:
-    image: 'axllent/mailpit:latest'
-    restart: unless-stopped
-    ports:
-      - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
-
 volumes:
   mysql:
     driver: local
