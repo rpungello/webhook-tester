@@ -8,7 +8,7 @@
         "php": "^8.2",
         "ext-pdo": "*",
         "dyrynda/laravel-nullable-fields": "^4.4",
-        "jantinnerezo/livewire-alert": "^3.0",
+        "jantinnerezo/livewire-alert": "^4.0",
         "laravel/fortify": "^1.21",
         "laravel/framework": "^11.9",
         "laravel/horizon": "^5.25",
@@ -17,7 +17,7 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "meilisearch/meilisearch-php": "^1.9",
-        "robsontenorio/mary": "^1.34",
+        "robsontenorio/mary": "^2.3",
         "vectorface/whip": "^0.5.0"
     },
     "require-dev": {
